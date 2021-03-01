@@ -1,0 +1,7 @@
+{
+  "name": "frater",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
