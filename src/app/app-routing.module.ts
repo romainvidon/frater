@@ -15,17 +15,12 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
-<<<<<<< HEAD
     path: 'fininscription',
     loadChildren: () => import('./fininscription/fininscription.module').then( m => m.FininscriptionPageModule)
-=======
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
->>>>>>> 6fdaa4bb2b90d63bb8333c78634eb8bea61649d9
   }
 
 
