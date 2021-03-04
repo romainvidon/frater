@@ -13,10 +13,10 @@ import { AppComponent } from './app.component';
 export function jwtOptionsFactory(storage: Storage) {
   return {
     tokenGetter: () => {
-      //return storage.get('access_token');
-      return "";
+      return storage.get('access_token');
     },
-    allowedDomains: ["localhost:3030","127.0.0.1:3030"]
+    allowedDomains: ["localhost:3030","127.0.0.1:3030"],
+    disallowedRoutes: ["//127.0.0.1:3030/authentification"],
   }
 }
  
