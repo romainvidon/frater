@@ -24,3 +24,28 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Typos */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+$font-content: "Poppins", "Roboto", sans-serif;
+
+/* Buttons */
+ion-button {
+    --border-radius: 12px;
+    font-size: 18px;
+    text-transform: none !important;
+}
+
+small {
+    color: var(--ion-color-medium);
+}
+
+.form-flow {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    bottom: 0;
+    width: 100%;
+    background-color: #D3EFEC;
+    height: 5px;
+}

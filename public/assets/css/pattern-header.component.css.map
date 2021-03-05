@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,KAAK;CACpB;;AAED,AAAA,OAAO,CAAC;EACJ,OAAO,EAAE,KAAK;EACd,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,GAAG,EAAE,CAAC;CACT",
+    "sources": [
+        "../../../src/app/pattern-header/pattern-header.component.scss"
+    ],
+    "names": [],
+    "file": "pattern-header.component.css"
+}
