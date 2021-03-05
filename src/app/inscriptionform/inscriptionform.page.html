@@ -12,35 +12,35 @@
   </ion-header>
 
   <div id="container">
-    <form>
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
       <h1>Mais avant, nous avons besoin de quelques informations</h1>
       <p>C'est pas long promis</p>
 
       <ion-item>
         <ion-label position="floating">Prénom ou surnom</ion-label>
-        <ion-input></ion-input>
+        <ion-input formControlName="prenom"></ion-input>
       </ion-item>
       <p>Comment tu veux qu'on t'appelle sur frater ?</p>
 
       <ion-item>
         <ion-label position="floating">Adresse email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName="pwd"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Confirmer le mot de passe</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
+        <ion-input type="password" formControlName="pwdconf"></ion-input>
+      </ion-item> 
 
-      <ion-checkbox></ion-checkbox><br>
+      <ion-checkbox formControlName="certif"></ion-checkbox><br>
       <ion-label>Je certifie avoir plus de 18 ans et adhérer aux condtions générales d'utilisations</ion-label><br>
 
-      <ion-button color="secondary">Créer mon compte</ion-button>
+      <ion-button color="secondary" [disabled]="!registrationForm.valid" type="submit">Créer mon compte</ion-button>
       <p>Nous ne revendons pas vos données personelles et nous ne spammons pas</p>
 
     </form>
