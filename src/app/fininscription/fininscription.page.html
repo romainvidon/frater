@@ -28,7 +28,7 @@
             </ion-item>
           </ion-radio-group>
           <ion-item *ngIf="show">
-            <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary" formControlName="slider"></ion-range>
+            <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary" formControlName="slider" [(ngModel)]="user.rayonRecherche"></ion-range>
             <ion-label >{{user.rayonRecherche}} km</ion-label>
           </ion-item>
 
