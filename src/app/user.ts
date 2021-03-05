@@ -1,7 +1,7 @@
 export interface User {
-    id: number;
+    id?: number;
     email: string;
-    password : string;
+    password? : string;
     pseudo: string;
     age: number;
     role:TypeRole;

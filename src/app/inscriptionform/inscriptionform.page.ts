@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Genre, TypeRole, User } from '../user';
 
 @Component({
   selector: 'app-inscriptionform',
@@ -9,10 +11,13 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 export class InscriptionformPage implements OnInit {
     registrationForm:FormGroup;
     isSubmitted = false;
-
-  constructor(private fb:FormBuilder) { }
+  user: User= {id:null,email:"",genre:Genre.Masculin,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  constructor(private fb:FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(map => {
+      this.user.role = (map.get("role") === "adelphe" ? TypeRole.Adelphe : TypeRole.Jeune);
+    });
     this.registrationForm = this.fb.group({
         prenom:['',[Validators.required]],
         email: ['',[Validators.required, Validators.email]],
