@@ -1,0 +1,18 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "frater",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {},
+  "linuxAndroidStudioPath": "android-studio",
+  "server": {
+    "url": "http://192.168.1.33:8100",
+    "cleartext": true
+  }
+}
