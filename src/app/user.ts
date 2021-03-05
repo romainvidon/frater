@@ -8,16 +8,17 @@ export interface User {
     genre:Genre;
     rayonRecherche:number;
     typeRecherche:string[];
-    //position:object;
-    longitude:number;
-    latitude:number;
+    position:{
+        longitude: number;
+        latitude: number;
+    };
 }
-enum Genre{
+export enum Genre{
     Masculin = "Masculin",
     Feminin = "Feminin",
     Autre = "Autre",
 }
-enum TypeRole{
+export enum TypeRole{
     Jeune = "Jeune",
     Adelphe = "Adelphe",
     Modo = "Modo",
