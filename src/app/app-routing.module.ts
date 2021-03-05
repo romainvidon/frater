@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'choixinscription',
+    path: '',
     loadChildren: () => import('./choixinscription/choixinscription.module').then( m => m.ChoixinscriptionPageModule)
   },
   {

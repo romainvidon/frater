@@ -10,7 +10,8 @@ export class InscriptionformPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}    
+  ngOnInit() {
+  }
   
   /*
   checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
