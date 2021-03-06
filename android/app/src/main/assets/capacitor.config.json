@@ -10,9 +10,5 @@
     }
   },
   "cordova": {},
-  "linuxAndroidStudioPath": "android-studio",
-  "server": {
-    "url": "http://192.168.1.33:8100",
-    "cleartext": true
-  }
+  "linuxAndroidStudioPath": "android-studio"
 }

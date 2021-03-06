@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Genre, TypeRole, User } from '../user';
 
 @Component({
@@ -9,10 +9,10 @@ import { Genre, TypeRole, User } from '../user';
   styleUrls: ['./inscriptionform.page.scss'],
 })
 export class InscriptionformPage implements OnInit {
-    registrationForm:FormGroup;
-    isSubmitted = false;
-  user: User= {id:null,email:"",genre:Genre.Masculin,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
-  constructor(private fb:FormBuilder, private route: ActivatedRoute) { }
+  registrationForm: FormGroup;
+  isSubmitted = false;
+  user: User= {id:null,email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(map => {
@@ -26,8 +26,10 @@ export class InscriptionformPage implements OnInit {
         certif:['',[Validators.requiredTrue]]},
         {
             validator: this.checkIfMatchingPasswords('pwd', 'pwdconf')
-        });
+        }
+        );
   }
+  
   //Méthode pour comparer les mots de passe entre eux et pour pouvoir faire la confirmation dans le formulaire
   checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
     return (group: FormGroup) => {
@@ -41,14 +43,20 @@ export class InscriptionformPage implements OnInit {
       }
     }
   }
-  /* Méthode pour voir dans la console le résultat
+  // Méthode pour voir dans la console le résultat
   submitForm() {
     this.isSubmitted = true;
     if (!this.registrationForm.valid) {
-      console.log('Remplissez tout les champs!')
+      console.log('Remplissez tous les champs!')
       return false;
     } else {
+      let v = this.registrationForm.value;
+      this.user.pseudo = v.prenom;
+      this.user.email = v.email;
+      this.user.password = v.pwd;
+      this.router.navigate(['/fininscription', {user: JSON.stringify(this.user)}] )
+      console.log(this.user);
       console.log(this.registrationForm.value)
     }
-  }*/
+  }
 }
