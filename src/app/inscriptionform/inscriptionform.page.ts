@@ -11,7 +11,7 @@ import { Genre, TypeRole, User } from '../user';
 export class InscriptionformPage implements OnInit {
   registrationForm: FormGroup;
   isSubmitted = false;
-  user: User= {id:null,email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

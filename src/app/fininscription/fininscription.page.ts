@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { User, Genre, TypeRole } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-fininscription',
@@ -11,7 +12,7 @@ import { User, Genre, TypeRole } from '../user';
 })
 export class FininscriptionPage implements OnInit {
   public show: boolean = false;
-  user: User = {id:null,email:"",genre:Genre.Masculin,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  user: User = {email:"",genre:Genre.Masculin,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
   isSubmitted = false;
   finForm: FormGroup;
  
@@ -24,19 +25,17 @@ export class FininscriptionPage implements OnInit {
             this.show = !this.show;
     }
 
-  constructor(private router:Router, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private router:Router, private fb: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
    }
 
   ngOnInit() {
     this.finForm = this.fb.group({
-      age:['',[Validators.required,Validators.min(18)]],
-      typeRecherche: ['',[Validators.required]],
-      
-      slider:[0,[Validators.required]],
-      chkf:[false,[]],
-
-      chks :[false,[]],
-      
+        age:['',[Validators.required,Validators.min(18)]],
+        typeRecherche: ['',[Validators.required]],
+        
+        slider:[0,[Validators.required]],
+        chkf:[false,[]],
+        chks :[false,[]],      
       },{
         validator: this.validationChoixRecherche()
       });
@@ -63,7 +62,7 @@ export class FininscriptionPage implements OnInit {
   go() {
     this.isSubmitted = true;
     if (!this.finForm.valid) {
-      console.log('Remplissez tout les champs!')
+      console.log('Remplissez tous les champs!')
       return false;
     } else {
       let v = this.finForm.value;
@@ -78,6 +77,8 @@ export class FininscriptionPage implements OnInit {
         }
       }
       console.log(this.user);
+
+      this.userService.addUser(this.user).subscribe(result => console.log);
       //this.router.navigate(['/dashboard']);
     }
   }

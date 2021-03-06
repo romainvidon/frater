@@ -1,11 +1,11 @@
 export interface User {
-    id?: number;
+    _id?: number;
     email: string;
     password? : string;
     pseudo: string;
     age: number;
     role:TypeRole;
-    genre:Genre;
+    genre?:Genre;
     rayonRecherche:number;
     typeRecherche:string[];
     position:{
@@ -14,13 +14,13 @@ export interface User {
     };
 }
 export enum Genre{
-    Masculin = "Masculin",
-    Feminin = "Feminin",
-    Autre = "Autre",
+    Masculin = "m",
+    Feminin = "f",
+    Autre = "a",
 }
 export enum TypeRole{
-    Jeune = "Jeune",
-    Adelphe = "Adelphe",
-    Modo = "Modo",
-    Admin = "Admin",
+    Jeune = "jeune",
+    Adelphe = "adelphe",
+    Modo = "modo",
+    Admin = "admin",
 }

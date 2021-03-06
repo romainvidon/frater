@@ -24,7 +24,12 @@ export class UserService {
   getUser(id: number){
       return this.http.get<User>(this.usersUrl + "/" +id,this.httpOptions)
   }
-
+  addUser(user: User): Observable<User>{
+    return this.http.post<User>(this.usersUrl, user, this.httpOptions);
+  }
+  updateUser(user: User): Observable<User>{
+    return this.http.put<User>(this.usersUrl + "/"+ user._id, user, this.httpOptions);
+  }
   /**
    * On gère la requête qui a pasz marché
    * L'app continue de marcher.
@@ -44,15 +49,8 @@ export class UserService {
       return of(result as T);
     };
   }
+  // méthodes pour recup,creer,update données api
+
+
 }
-/* commentaire pour exemple de methodes pour recup,creer,update donnes api
-getUser(id:string){
-    return this.http.get<User>(apiURL + this.urlRoute + "/" +id, httpOptions);
-  }
-  addUser(User: user): Observable<User>{
-    return this.http.post<User>(apiURL + this.urlRoute, user, httpOptions);
-  }
-  updateUser(User: user): Observable<User>{
-    return this.http.put<User>(apiURL + this.urlRoute + "/"+ user._id, User, httpOptions);
-  }
-*/
+
