@@ -11,7 +11,7 @@ import { Genre, TypeRole, User } from '../user';
 export class InscriptionformPage implements OnInit {
   registrationForm: FormGroup;
   isSubmitted = false;
-  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0}};
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -23,7 +23,8 @@ export class InscriptionformPage implements OnInit {
         email: ['',[Validators.required, Validators.email]],
         pwd:['',[Validators.required,Validators.minLength(4),Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
         pwdconf:['',[Validators.required,Validators.minLength(4),Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),]],
-        certif:['',[Validators.requiredTrue]]},
+        certif:[false,[Validators.requiredTrue]],
+      },
         {
             validator: this.checkIfMatchingPasswords('pwd', 'pwdconf')
         }

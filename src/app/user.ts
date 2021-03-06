@@ -7,7 +7,7 @@ export interface User {
     role:TypeRole;
     genre?:Genre;
     rayonRecherche:number;
-    typeRecherche:string[];
+    typeRecherche?:string[];
     position:{
         longitude: number;
         latitude: number;
