@@ -34,18 +34,36 @@ ion-button {
     --border-radius: 12px;
     font-size: 18px;
     text-transform: none !important;
+    
+}
+
+ion-button.success-gradient {
+    background: rgb(1,188,14);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(1,188,14,1) 0%, rgba(16,167,27,1) 70%, rgba(18,152,26,1) 100%) !important; 
 }
 
 small {
+    display: inline-block;
+    padding-top: 8px;
     color: var(--ion-color-medium);
 }
 
 .form-flow {
     position: fixed;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     bottom: 0;
     width: 100%;
-    background-color: #D3EFEC;
-    height: 5px;
+}
+
+h1, h2 {
+    font-weight: 500;
+    display: block;
+    margin: 25px auto;
+    text-align: center;
+    font-size: 1.3125rem;
+}
+
+h2 {
+    font-size: 1.6875rem;
+    margin: 12px 0;
 }

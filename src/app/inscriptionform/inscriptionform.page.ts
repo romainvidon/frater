@@ -8,7 +8,18 @@ import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 })
 export class InscriptionformPage implements OnInit {
 
-  constructor() { }
+/* Password show/hide */
+
+  showPassword = false;
+  passwordToggleIcon = "eye";
+  
+  constructor() { 
+      
+  }
+  
+  togglePassword(): void {
+      this.showPassword = !this.showPassword
+  }
 
   ngOnInit() {
   }

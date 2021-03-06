@@ -83,6 +83,8 @@
    */
 
   body {
+    --ion-color-transparent: transparent;
+
     --ion-color-primary: #0e9ede;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -98,13 +100,13 @@
     --ion-color-secondary-tint: #62ceff;
 
     --ion-color-tertiary: #ffeb3b;
-    --ion-color-tertiary-rgb: 106,100,255;
+    --ion-color-tertiary-rgb: 255,213,52;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-tertiary-contrast-rgb: 255,255,255;
     --ion-color-tertiary-shade: #5d58e0;
     --ion-color-tertiary-tint: #7974ff;
 
-    --ion-color-success: linear-gradient(90deg, rgba(1,188,14,1) 0%, rgba(16,167,27,1) 70%, rgba(18,152,26,1) 100%);
+    --ion-color-success: linear-gradient(180deg, rgba(1,188,14,1) 0%, rgba(16,167,27,1) 70%, rgba(18,152,26,1) 100%);
     --ion-color-success-rgb: 47,223,117;
     --ion-color-success-contrast: #000000;
     --ion-color-success-contrast-rgb: 0,0,0;
@@ -234,5 +236,3 @@
     --ion-card-background: #1e1e1e;
   }
 }
-
-$gray: #707070;

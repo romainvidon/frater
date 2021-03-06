@@ -1,31 +1,55 @@
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+h1 {
+    margin-bottom: 12px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+p.subtitle {
+    color: var(--ion-color-medium);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#container-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
-#container a {
-  text-decoration: none;
+.small-prenom {
+    display: inline-block;
+    padding-left: 16px;
 }
 
-ion-item {
-  width: 20%;
-  margin: 0 auto;
+.check {
+    display: inline-flex;
+    .check-box {
+        width: 25px;
+        height: 25px;
+        border-radius: 100px;
+        border: 1ps solid var(--ion-color-medium);
+    }
+    .check-label {
+        display: inline-flex;
+        padding-left: 8px;
+    }
+}
+
+.unmask {
+        display: inline-block;
+        position: absolute;
+        right: 16px;
+        bottom: 6px;
+        font-size: 1.5rem;
+        cursor: pointer;
+}
+
+
+.form-flow {
+    &::after {
+        content: "2/3";
+        font-size: 1.25rem;
+        color: var(--ion-color-medium);
+        display: block;
+        position: absolute;
+        right: 25px;
+        top: -30px;
+    }
 }

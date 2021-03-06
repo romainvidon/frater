@@ -1,53 +1,47 @@
-  <ion-content [fullscreen]="true"> 
+<ion-content [fullscreen]="true">
   <app-pattern-header></app-pattern-header>
-    
+
   <ion-grid>
 
     <!-- Title -->
     <ion-row>
-        <ion-col>
-            <h1>Rejoins notre communauté !</h1>
-        </ion-col>
+      <ion-col>
+        <h1>Rejoins notre communauté !</h1>
+      </ion-col>
     </ion-row>
 
     <div id="container-content">
-    <!-- Goal 1 -->
-    <ion-row class="content-1">
+      <!-- Goal 1 -->
+      <ion-row class="content-1">
         <ion-col>
-            <h2 class="h2-junior">Tu es ici pour :</h2>
-            <p>Trouver ta grande soeur ou ton grand frère de ❤️</p>
-            <ion-button color="primary" size="large" expand="block" (click)="go()">Oui c'est ça !</ion-button>
+          <h2 class="h2-junior">Tu es ici pour :</h2>
+          <p>Trouver ta grande soeur ou ton grand frère de ❤️</p>
+          <ion-button class="ion-activatable ripple-parent" color="primary" size="large" expand="block" (click)="go()">
+            Oui c'est ça !</ion-button>
         </ion-col>
-    </ion-row>
+      </ion-row>
 
-    <!-- Goal 2 -->
-    <ion-row class="content-2">
+      <!-- Goal 2 -->
+      <ion-row class="content-2">
         <ion-col>
-            <h2 class="h2-parrain">Ou pour :</h2>
-            <p>Proposer ton aide fraternelle 🤝</p>
-            <ion-button color="primary" fill="outline" size="large" (click)="go()" expand="block">Mon expérience peut servir</ion-button>
+          <h2 class="h2-parrain">Ou pour :</h2>
+          <p>Proposer ton aide fraternelle 🤝</p>
+          <ion-button class="ion-activatable ripple-parent" color="primary" fill="outline" size="large" (click)="go()"
+            expand="block">Mon expérience peut servir</ion-button>
         </ion-col>
-    </ion-row>
-</div>
-    <ion-row>
+      </ion-row>
+
+      <ion-row>
         <ion-col>
-            <small>Tu pourras changer par la suite</small>
+          <small>Tu pourras changer par la suite</small>
         </ion-col>
-    </ion-row>
-      
+      </ion-row>
+    </div>
   </ion-grid>
 
   <div class="form-flow">
-
+    <!-- Colorize Progressbar -->
+    <ion-progress-bar color="primary" value="0.3333"></ion-progress-bar>
   </div>
 
-      
-  
-      
-  
-      
-  
-      
-  
-  </ion-content>
-  
+</ion-content>
