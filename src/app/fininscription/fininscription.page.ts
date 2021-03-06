@@ -18,32 +18,45 @@ export class FininscriptionPage implements OnInit {
     toogle(){
         if(!this.show)
             this.show = true;
-            this.finForm.controls['rb1'].setValue(false);
-            this.finForm.controls['rb2'].setValue(true);
     }
     untoogle(){
         if(this.show)
             this.show = !this.show;
-            this.finForm.controls['rb1'].setValue(true);
-            this.finForm.controls['rb2'].setValue(false);
     }
 
   constructor(private router:Router, private fb: FormBuilder, private route: ActivatedRoute) {
    }
 
   ngOnInit() {
-      this.finForm = this.fb.group({
-        age:['18',[Validators.required,Validators.min(18)]],
-        rb1: ['',[Validators.required]],
-        rb2:['',[Validators.required]],
-        slider:[0,[Validators.required]],
-        chks:[null,[Validators.required]],
-        chkf:[false,[Validators.required]]},);
-        this.route.paramMap.subscribe(map => {
-          let userRecup = JSON.parse(map.get("user"));
-          this.user = userRecup;
-        });
+    this.finForm = this.fb.group({
+      age:['',[Validators.required,Validators.min(18)]],
+      typeRecherche: ['',[Validators.required]],
+      
+      slider:[0,[Validators.required]],
+      chkf:[false,[]],
+
+      chks :[false,[]],
+      
+      },{
+        validator: this.validationChoixRecherche()
+      });
+    this.route.paramMap.subscribe(map => {
+      let userRecup = JSON.parse(map.get("user"));
+      this.user = userRecup;
+    });
   }
+
+  validationChoixRecherche(){
+    return (fg: FormGroup) => {
+      if(!(fg.value.chks || fg.value.chkf)){
+        fg.controls.chkf.setErrors({atLeast1: true});
+      } else {
+        fg.controls.chkf.setErrors(null);
+      }
+    }
+  }
+
+
   chkvalid(){
     this.finForm.controls['chks'].setValue(false);
   }
@@ -53,8 +66,19 @@ export class FininscriptionPage implements OnInit {
       console.log('Remplissez tout les champs!')
       return false;
     } else {
-      console.log(this.finForm.value)
-      this.router.navigate(['/dashboard']);
+      let v = this.finForm.value;
+      console.log(this.finForm)
+      this.user.age = v.age;
+      this.user.rayonRecherche = (v.typeRecherche === "peuimporte" ? 0 : v.slider);
+      if(this.user.role = TypeRole.Jeune){
+        let inputs = {h: "v.chkf",f: "v.chks"};
+        this.user.typeRecherche=[];
+        for (const value in inputs) {
+          if(inputs[value]) this.user.typeRecherche.push(value);
+        }
+      }
+      console.log(this.user);
+      //this.router.navigate(['/dashboard']);
     }
   }
 
