@@ -1,26 +1,26 @@
 export interface User {
-    id: number;
+    _id?: number;
     email: string;
-    password : string;
+    password? : string;
     pseudo: string;
     age: number;
     role:TypeRole;
-    genre:Genre;
+    genre?:Genre;
     rayonRecherche:number;
-    typeRecherche:string[];
+    typeRecherche?:string[];
     position:{
         longitude: number;
         latitude: number;
     };
 }
 export enum Genre{
-    Masculin = "Masculin",
-    Feminin = "Feminin",
-    Autre = "Autre",
+    Masculin = "m",
+    Feminin = "f",
+    Autre = "a",
 }
 export enum TypeRole{
-    Jeune = "Jeune",
-    Adelphe = "Adelphe",
-    Modo = "Modo",
-    Admin = "Admin",
+    Jeune = "jeune",
+    Adelphe = "adelphe",
+    Modo = "modo",
+    Admin = "admin",
 }

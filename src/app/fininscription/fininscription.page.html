@@ -13,33 +13,51 @@
 
   <div id="container">
     <form [formGroup]="finForm" (ngSubmit)="go()" novalidate>
-      <h2>Quel âges as-tu ?</h2>
+      <h2>Quel âge as-tu ?</h2>
       J'ai<ion-input type="number" value="18" formControlName="age"></ion-input>ans.
 
-      <h2>Ta recherche :</h2>
-      <ion-radio-group>
-        <ion-item>
-          <ion-label>Peu importe le secteur</ion-label>
-          <ion-radio value="false" formControlName="rb1" (click)="untoogle()"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Proche de moi</ion-label>
-          <ion-radio value="false" formControlName="rb2" (click)="toogle()"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
+      <ion-list>
+        <ion-header><h2>Ta recherche :</h2></ion-header>
+        <ion-radio-group formControlName="typeRecherche">
+          <ion-item>
+            <ion-label>Peu importe le secteur</ion-label>
+            <ion-radio value="peuimporte" (click)="untoogle()"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Proche de moi</ion-label>
+            <ion-radio value="proche" (click)="toogle()"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      
       <ion-item *ngIf="show">
         <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary"
           formControlName="slider"></ion-range>
         <ion-label>{{finForm.value.slider}} km</ion-label>
       </ion-item>
-
-      <h2>Je souhaite voir en premier :</h2>
-
-      <ion-label>Des grandes soeurs</ion-label>
-      <ion-checkbox formControlName="chks"></ion-checkbox><br>
-
-      <ion-label>Des grands frères</ion-label>
-      <ion-checkbox formControlName="chkf" (click)="chkvalid()"></ion-checkbox>
+      
+      <ion-list *ngIf="this.user.role == role.Jeune">
+        <ion-list-header><h2>Je souhaite voir en premier :</h2></ion-list-header>
+        <ion-label>Des grandes soeurs</ion-label>
+        <ion-checkbox formControlName="chks"></ion-checkbox><br>
+  
+        <ion-label>Des grands frères</ion-label>
+        <ion-checkbox formControlName="chkf"></ion-checkbox>
+      </ion-list>
+      <ion-list *ngIf="this.user.role == role.Adelphe">
+        <ion-list-header><h2>Genre</h2></ion-list-header>
+        <ion-radio-group formControlName="genre">
+          
+          <ion-item>
+            <ion-label>Homme</ion-label>
+            <ion-radio value="h"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Femme</ion-label>
+            <ion-radio value="f"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
 
       <p>Tu pourras changer par la suite</p>
       <ion-button color="secondary" type="submit" [disabled]="!finForm.valid">Valider</ion-button>
