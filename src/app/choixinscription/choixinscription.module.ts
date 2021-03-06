@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ChoixinscriptionPageRoutingModule } from './choixinscription-routing.module';
 
 import { ChoixinscriptionPage } from './choixinscription.page';
+import { PatternHeaderComponent } from '../pattern-header/pattern-header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ChoixinscriptionPage } from './choixinscription.page';
     IonicModule,
     ChoixinscriptionPageRoutingModule
   ],
-  declarations: [ChoixinscriptionPage]
+  declarations: [ChoixinscriptionPage, PatternHeaderComponent]
 })
 export class ChoixinscriptionPageModule {}

@@ -1,29 +1,44 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        Choix Inscription
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large"></ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <div id="container">
-      <h2>Rejoins notre communauté !</h2>
-  
-      <h1>Tu est ici pour :</h1>
-      <p>Trouver ta grande soeur ou ton grand frère de coeur</p>
-      <ion-button (click)="go('jeune')">Oui c'est ca !</ion-button>
-  
-      <h1>Ou pour :</h1>
-      <p>Proposer ton aide fraternelle :</p>
-      <ion-button color="secondary" (click)="go('adelphe')">Mon expérience peut servir</ion-button>
-  
-      <p>Tu pourras changer par la suite</p>
-    </div>
-  
-  </ion-content>
+  <ion-content [fullscreen]="true"> 
+  <app-pattern-header></app-pattern-header>
+    
+  <ion-grid>
+
+    <!-- Title -->
+    <ion-row>
+        <ion-col>
+            <h1>Rejoins notre communauté !</h1>
+        </ion-col>
+    </ion-row>
+
+    <div id="container-content">
+    <!-- Goal 1 -->
+    <ion-row class="content-1">
+        <ion-col>
+            <h2 class="h2-junior">Tu es ici pour :</h2>
+            <p>Trouver ta grande soeur ou ton grand frère de ❤️</p>
+            <ion-button color="primary" size="large" expand="block" (click)="go('jeune')">Oui c'est ça !</ion-button>
+        </ion-col>
+    </ion-row>
+
+    <!-- Goal 2 -->
+    <ion-row class="content-2">
+        <ion-col>
+            <h2 class="h2-parrain">Ou pour :</h2>
+            <p>Proposer ton aide fraternelle 🤝</p>
+            <ion-button color="primary" fill="outline" size="large" (click)="go('adelphe')" expand="block">Mon expérience peut servir</ion-button>
+        </ion-col>
+    </ion-row>
+</div>
+    <ion-row>
+        <ion-col>
+            <small>Tu pourras changer par la suite</small>
+        </ion-col>
+    </ion-row>
+      
+  </ion-grid>
+
+  <div class="form-flow">
+
+  </div>
+</ion-content>
   
