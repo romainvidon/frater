@@ -18,34 +18,39 @@ export class FininscriptionPage implements OnInit {
     toogle(){
         if(!this.show)
             this.show = true;
+            this.finForm.controls['rb1'].setValue(false);
+            this.finForm.controls['rb2'].setValue(true);
     }
     untoogle(){
         if(this.show)
             this.show = !this.show;
+            this.finForm.controls['rb1'].setValue(true);
+            this.finForm.controls['rb2'].setValue(false);
     }
 
-  constructor(private router:Router, private fb: FormBuilder) { }
+  constructor(private router:Router, private fb: FormBuilder) {
+   }
 
   ngOnInit() {
       this.finForm = this.fb.group({
-        age:['18',[Validators.required]],
+        age:['18',[Validators.required,Validators.min(18)]],
         rb1: ['',[Validators.required]],
         rb2:['',[Validators.required]],
-        slider:['',[Validators.required]],
-        chks:['false',[Validators.required]],
-        chkf:['false',[Validators.required]],
-      })
+        slider:[0,[Validators.required]],
+        chks:[null,[Validators.required]],
+        chkf:[false,[Validators.required]]},);
   }
-  go(){
-    this.router.navigate(['/dashboard']);
+  chkvalid(){
+    this.finForm.controls['chks'].setValue(false);
   }
-  submitForm() {
+  go() {
     this.isSubmitted = true;
     if (!this.finForm.valid) {
       console.log('Remplissez tout les champs!')
       return false;
     } else {
       console.log(this.finForm.value)
+      this.router.navigate(['/dashboard']);
     }
   }
 
