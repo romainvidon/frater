@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { FininscriptionPageRoutingModule } from './fininscription-routing.module';
 
 import { FininscriptionPage } from './fininscription.page';
+import { PatternHeaderComponent } from '../pattern-header/pattern-header.component';
+
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { FininscriptionPage } from './fininscription.page';
     IonicModule,
     FininscriptionPageRoutingModule
   ],
-  declarations: [FininscriptionPage]
+  declarations: [FininscriptionPage,PatternHeaderComponent]
 })
 export class FininscriptionPageModule {}
