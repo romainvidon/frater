@@ -14,12 +14,12 @@
     <!-- Form -->
     <div id="container-content">
       <ion-row class="ion-padding-horizontal ion-padding-bottom">
-        <form>
+        <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
 
           <ion-col class="ion-padding-bottom ion-no-padding">
             <ion-item>
-              <ion-label position="floating" class="ion-no-horizontal-padding">Prénom ou surnom</ion-label>
-              <ion-input></ion-input>
+              <ion-label position="floating" class="ion-no-horizontal-padding" >Prénom ou surnom</ion-label>
+              <ion-input formControlName="prenom"></ion-input>
             </ion-item>
             <small class="small-prenom">Comment veux-tu que l'on t'appelle sur frater ?</small>
           </ion-col>
@@ -27,14 +27,14 @@
           <ion-col class="ion-padding-vertical">
             <ion-item>
               <ion-label position="floating">Adresse email</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
           </ion-col>
 
           <ion-col class="ion-padding-vertical">
             <ion-item class="password">
               <ion-label position="floating">Mot de passe</ion-label>
-              <ion-input [type]="showPassword ? 'text' : 'password'"></ion-input>
+              <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="pwd"></ion-input>
               <ion-icon class="unmask" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
             </ion-item>
           </ion-col>
@@ -42,7 +42,7 @@
           <ion-col class="ion-padding-vertical">
             <ion-item>
               <ion-label position="floating">Confirmer le mot de passe</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input type="password" formControlName="pwdconf"></ion-input>
             </ion-item>
           </ion-col>
 
@@ -50,12 +50,12 @@
 
           
           <ion-col class="check">
-            <ion-checkbox class="checkbox" color="primary"></ion-checkbox>
+            <ion-checkbox class="checkbox" color="primary" formControlName="certif"></ion-checkbox>
             <ion-label class="check-label">Je certifie avoir plus de 18 ans et adhérer aux condtions générales d'utilisations</ion-label>
           </ion-col>
 
           <ion-col class="ion-padding-vertical">
-            <ion-button color="transparent" class="success-gradient" size="large" expand="block">Créer mon compte</ion-button>
+            <ion-button color="transparent" class="success-gradient" size="large" expand="block" [disabled]="!registrationForm.valid">Créer mon compte</ion-button>
             <small>Nous ne revendons pas vos données personelles et nous ne spammons pas</small>
           </ion-col>
         </div>

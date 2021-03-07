@@ -1,50 +1,67 @@
 <ion-header [translucent]="true">
+  <ion-toolbar>
+    Choix Inscription
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
     <ion-toolbar>
-        Choix Inscription
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large"></ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <div id="container">
-      <h2>Quel âges as-tu ?</h2>
-      <ion-input type="number" value="18"><p>J'ai</p>
-      </ion-input>ans.
 
-      <h2>Ta recherche :</h2>
+  <div id="container">
+    <form [formGroup]="finForm" (ngSubmit)="go()" novalidate>
+      <h2>Quel âge as-tu ?</h2>
+      J'ai<ion-input type="number" value="18" formControlName="age"></ion-input>ans.
+
       <ion-list>
-          <ion-radio-group>
-            <ion-item (click)="untoogle()">
-                <ion-label>Peu importe le secteur</ion-label>
-                <ion-radio value="nimporte"></ion-radio>
-            </ion-item>
-
-            <ion-item (click)="toogle()">
-                <ion-label>Proche de moi</ion-label>
-                <ion-radio value="moi"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-          <ion-item *ngIf="show">
-            <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary"></ion-range>
+        <ion-header><h2>Ta recherche :</h2></ion-header>
+        <ion-radio-group formControlName="typeRecherche">
+          <ion-item>
+            <ion-label>Peu importe le secteur</ion-label>
+            <ion-radio value="peuimporte" (click)="untoogle()"></ion-radio>
           </ion-item>
+          <ion-item>
+            <ion-label>Proche de moi</ion-label>
+            <ion-radio value="proche" (click)="toogle()"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      
+      <ion-item *ngIf="show">
+        <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary"
+          formControlName="slider"></ion-range>
+        <ion-label>{{finForm.value.slider}} km</ion-label>
+      </ion-item>
+      
+      <ion-list *ngIf="this.user.role == role.Jeune">
+        <ion-list-header><h2>Je souhaite voir en premier :</h2></ion-list-header>
+        <ion-label>Des grandes soeurs</ion-label>
+        <ion-checkbox formControlName="chks"></ion-checkbox><br>
+  
+        <ion-label>Des grands frères</ion-label>
+        <ion-checkbox formControlName="chkf"></ion-checkbox>
+      </ion-list>
+      <ion-list *ngIf="this.user.role == role.Adelphe">
+        <ion-list-header><h2>Genre</h2></ion-list-header>
+        <ion-radio-group formControlName="genre">
+          
+          <ion-item>
+            <ion-label>Homme</ion-label>
+            <ion-radio value="h"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Femme</ion-label>
+            <ion-radio value="f"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
       </ion-list>
 
-      <h2>Je souhaite voir en premier :</h2>
-
-      <ion-label>Des grandes soeurs</ion-label>
-      <ion-checkbox></ion-checkbox><br>
-
-      <ion-label>Des grands frères</ion-label>
-      <ion-checkbox></ion-checkbox>
-
       <p>Tu pourras changer par la suite</p>
-      <ion-button color="secondary" (click)="go()">Valider</ion-button>
-    </div>
-  
-  </ion-content>
-  
+      <ion-button color="secondary" type="submit" [disabled]="!finForm.valid">Valider</ion-button>
+    </form>
+  </div>
+
+</ion-content>
