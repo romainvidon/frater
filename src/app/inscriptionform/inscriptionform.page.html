@@ -12,13 +12,15 @@
     </ion-row>
 
     <!-- Form -->
-    <div id="container-content">
-      <ion-row class="ion-padding-horizontal ion-padding-bottom">
+    <ion-row class="ion-padding-horizontal ion-padding-bottom">
+      <div class="container-content">
+
+
         <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
 
           <ion-col class="ion-padding-bottom ion-no-padding">
             <ion-item>
-              <ion-label position="floating" class="ion-no-horizontal-padding" >Prénom ou surnom</ion-label>
+              <ion-label position="floating" class="ion-no-horizontal-padding">Prénom ou surnom</ion-label>
               <ion-input formControlName="prenom"></ion-input>
             </ion-item>
             <small class="small-form">Comment veux-tu que l'on t'appelle sur frater ?</small>
@@ -49,23 +51,24 @@
 
           <div class="wrapper-cta">
 
-          
-          <ion-col class="check">
-                <ion-checkbox class="checkbox" color="primary" formControlName="certif"></ion-checkbox>
-                <ion-label class="check-label">Je certifie avoir plus de 18 ans et adhérer aux <a href="#!">condtions générales d'utilisations</a>.</ion-label>
-          </ion-col>
+            <ion-col class="check">
+              <ion-checkbox class="checkbox" color="primary" formControlName="certif"></ion-checkbox>
+              <ion-label class="check-label">Je certifie avoir plus de 18 ans et adhérer aux <a href="#!">condtions
+                  générales d'utilisations</a>.</ion-label>
+            </ion-col>
 
-          <ion-col class="ion-padding-vertical">
-            <ion-button color="transparent" class="success-gradient" size="large" expand="block" [disabled]="!registrationForm.valid" type="submit">Créer mon compte</ion-button>
-            <small class="small-form">Nous ne revendons pas vos données personelles et nous ne spammons pas</small>
-          </ion-col>
-        </div>
-     
-      </form>
+            <ion-col class="ion-padding-vertical">
+              <ion-button color="transparent" class="success-gradient" size="large" expand="block"
+                [disabled]="!registrationForm.valid" type="submit">Créer mon compte</ion-button>
+              <small class="small-form">Nous ne revendons pas vos données personelles et nous ne spammons pas</small>
+            </ion-col>
 
+          </div>
+
+        </form>
+      </div>
     </ion-row>
 
-    </div>
   </ion-grid>
 
   <div class="form-flow">

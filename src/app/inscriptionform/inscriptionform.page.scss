@@ -6,11 +6,17 @@ p.subtitle {
     color: var(--ion-color-medium);
 }
 
-#container-content {
+.container-content {
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.m-600 {
+    max-width: 600px;
 }
 
 .small-form {
@@ -21,8 +27,10 @@ p.subtitle {
 .check {
     padding: 0;
     .check-label {
-        display: inline-block;
+        display: inlineflex;
         padding-left: 16px;
+        //margin-top: -8px;
+        max-width: 400px;
     }
 }
 
@@ -35,8 +43,15 @@ p.subtitle {
         cursor: pointer;
 }
 
+.wrapper-cta {
+    margin-top: 6px;
+    ion-button {
+        margin-top: 25px;
+    }
+}
 
 .form-flow {
+    margin-top: 65px;
     &::after {
         content: "2/3";
         font-size: 1.25rem;
@@ -44,6 +59,6 @@ p.subtitle {
         display: block;
         position: absolute;
         right: 25px;
-        top: -30px;
+        top: 35px;
     }
 }
