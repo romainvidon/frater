@@ -13,22 +13,16 @@ p.subtitle {
     align-items: center;
 }
 
-.small-prenom {
+.small-form {
     display: inline-block;
     padding-left: 16px;
 }
 
 .check {
-    display: inline-flex;
-    .check-box {
-        width: 25px;
-        height: 25px;
-        border-radius: 100px;
-        border: 1ps solid var(--ion-color-medium);
-    }
+    padding: 0;
     .check-label {
-        display: inline-flex;
-        padding-left: 8px;
+        display: inline-block;
+        padding-left: 16px;
     }
 }
 

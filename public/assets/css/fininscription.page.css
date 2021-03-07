@@ -1,45 +1,83 @@
-#container {
+.container-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 25px;
+}
+
+.col-age {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 100%;
   text-align: center;
+  padding: 0 80px;
+}
+
+.col-age::before {
+  content: "";
+  border-bottom: 1px solid var(--ion-color-medium);
+  height: 1px;
+  width: 53px;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  bottom: 10px;
+  left: 30px;
+  margin-left: 80px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.col-title-2 {
+  margin-top: 65px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
+.col-title-2 h2 {
+  margin-bottom: 0;
 }
 
-#container a {
-  text-decoration: none;
+ion-list-header h2 {
+  margin-bottom: 25px;
 }
 
-ion-item {
-  width: 20%;
-  margin: 0 auto;
+.col-see-first ion-item ion-label {
+  padding-left: 18px;
 }
 
-ion-list {
-  width: 50%;
-  margin: 0 auto;
+h2 {
+  font-size: 1.3125rem;
 }
 
-ion-radio-group {
-  width: 20%;
+.radio-group ion-label {
+  padding-left: 18px;
 }
 
-ion-input {
-  width: 10%;
-  margin: 0 auto;
+.radio-group ion-label {
+  border-bottom: none;
+}
+
+.cta {
+  margin-top: 25px;
+}
+
+.form-flow::after {
+  content: "3/3";
+  font-size: 1.25rem;
+  color: var(--ion-color-medium);
+  display: block;
+  position: absolute;
+  right: 25px;
+  top: -30px;
 }
 /*# sourceMappingURL=fininscription.page.css.map */

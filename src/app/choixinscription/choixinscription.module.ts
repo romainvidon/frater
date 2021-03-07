@@ -14,7 +14,7 @@ import { PatternHeaderComponent } from '../pattern-header/pattern-header.compone
     CommonModule,
     FormsModule,
     IonicModule,
-    ChoixinscriptionPageRoutingModule
+    ChoixinscriptionPageRoutingModule,
   ],
   declarations: [ChoixinscriptionPage, PatternHeaderComponent]
 })
