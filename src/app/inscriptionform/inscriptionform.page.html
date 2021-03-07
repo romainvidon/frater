@@ -12,8 +12,10 @@
     </ion-row>
 
     <!-- Form -->
-    <div id="container-content">
-      <ion-row class="ion-padding-horizontal ion-padding-bottom">
+    <ion-row class="ion-padding-horizontal ion-padding-bottom">
+      <div class="container-content">
+
+
         <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
 
           <ion-col class="ion-padding-bottom ion-no-padding">
@@ -52,7 +54,6 @@
 
           <div class="wrapper-cta">
 
-
             <ion-col class="check">
               <ion-checkbox class="checkbox" color="primary" formControlName="certif"></ion-checkbox>
               <ion-label class="check-label">Je certifie avoir plus de 18 ans et adhérer aux <a href="#!">condtions
@@ -70,7 +71,6 @@
 
       </ion-row>
 
-    </div>
   </ion-grid>
 
   <div class="form-flow">

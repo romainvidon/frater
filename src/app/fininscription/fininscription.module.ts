@@ -9,7 +9,6 @@ import { FininscriptionPageRoutingModule } from './fininscription-routing.module
 import { FininscriptionPage } from './fininscription.page';
 import { PatternHeaderComponent } from '../pattern-header/pattern-header.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +17,11 @@ import { PatternHeaderComponent } from '../pattern-header/pattern-header.compone
     IonicModule,
     FininscriptionPageRoutingModule
   ],
+
+  declarations: [FininscriptionPage, 
+    PatternHeaderComponent]
+
   declarations: [FininscriptionPage,PatternHeaderComponent]
+
 })
 export class FininscriptionPageModule {}
