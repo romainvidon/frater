@@ -9,6 +9,10 @@ import { Genre, TypeRole, User } from '../user';
   styleUrls: ['./inscriptionform.page.scss'],
 })
 export class InscriptionformPage implements OnInit {
+  showPassword = false;
+  showConfirmPassword = false;
+  passwordToogleIcon = 'eye';
+  passwordConfirmToogleIcon = 'eye';
   registrationForm: FormGroup;
   isSubmitted = false;
   user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0}};
@@ -29,6 +33,27 @@ export class InscriptionformPage implements OnInit {
             validator: this.checkIfMatchingPasswords('pwd', 'pwdconf')
         }
         );
+  }
+  //Afficher cacher le mot de passe
+  tooglePassword(): void{
+    this.showPassword = !this.showPassword;
+  if(this.passwordToogleIcon == 'eye'){
+      this.passwordToogleIcon = 'eye-off';
+    }
+  else{
+      this.passwordToogleIcon = 'eye';
+    }
+  }
+
+  //Afficher cacher la confirmation du mot de passe
+  toogleConfirmPassword(): void{
+    this.showConfirmPassword = !this.showConfirmPassword;
+  if(this.passwordConfirmToogleIcon == 'eye'){
+      this.passwordConfirmToogleIcon = 'eye-off';
+    }
+  else{
+      this.passwordConfirmToogleIcon = 'eye';
+    }
   }
   
   //Méthode pour comparer les mots de passe entre eux et pour pouvoir faire la confirmation dans le formulaire
