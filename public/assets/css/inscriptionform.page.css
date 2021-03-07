@@ -1,31 +1,55 @@
-#container {
-  text-align: center;
+h1 {
+  margin-bottom: 12px;
+}
+
+p.subtitle {
+  color: var(--ion-color-medium);
+}
+
+#container-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.small-form {
+  display: inline-block;
+  padding-left: 16px;
+}
+
+.check {
+  padding: 0;
+}
+
+.check .check-label {
+  display: inline-block;
+  padding-left: 16px;
+}
+
+.unmask {
+  display: inline-block;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  right: 16px;
+  bottom: 6px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-ion-item {
-  width: 20%;
-  margin: 0 auto;
+.form-flow::after {
+  content: "2/3";
+  font-size: 1.25rem;
+  color: var(--ion-color-medium);
+  display: block;
+  position: absolute;
+  right: 25px;
+  top: -30px;
 }
 /*# sourceMappingURL=inscriptionform.page.css.map */

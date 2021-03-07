@@ -1,49 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    Formulaire d'inscription
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large"></ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-pattern-header></app-pattern-header>
 
-  <div id="container">
-    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
-      <h1>Mais avant, nous avons besoin de quelques informations</h1>
-      <p>C'est pas long promis</p>
+  <ion-grid>
 
-      <ion-item>
-        <ion-label position="floating">Prénom ou surnom</ion-label>
-        <ion-input formControlName="prenom"></ion-input>
-      </ion-item>
-      <p>Comment tu veux qu'on t'appelle sur frater ?</p>
+    <!-- Title -->
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <h1>Mais avant, nous avons besoin de quelques informations</h1>
+        <p class="subtitle">C'est pas long promis</p>
+      </ion-col>
+    </ion-row>
 
-      <ion-item>
-        <ion-label position="floating">Adresse email</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
+    <!-- Form -->
+    <div id="container-content">
+      <ion-row class="ion-padding-horizontal ion-padding-bottom">
+        <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" novalidate>
 
-      <ion-item>
-        <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input type="password" formControlName="pwd"></ion-input>
-      </ion-item>
+          <ion-col class="ion-padding-bottom ion-no-padding">
+            <ion-item>
+              <ion-label position="floating" class="ion-no-horizontal-padding" >Prénom ou surnom</ion-label>
+              <ion-input formControlName="prenom"></ion-input>
+            </ion-item>
+            <small class="small-form">Comment veux-tu que l'on t'appelle sur frater ?</small>
+          </ion-col>
 
-      <ion-item>
-        <ion-label position="floating">Confirmer le mot de passe</ion-label>
-        <ion-input type="password" formControlName="pwdconf"></ion-input>
-      </ion-item> 
+          <ion-col class="ion-padding-vertical">
+            <ion-item>
+              <ion-label position="floating">Adresse email</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+          </ion-col>
 
-      <ion-checkbox formControlName="certif"></ion-checkbox><br>
-      <ion-label>Je certifie avoir plus de 18 ans et adhérer aux condtions générales d'utilisations</ion-label><br>
+          <ion-col class="ion-padding-vertical">
+            <ion-item class="password">
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="pwd"></ion-input>
+              <ion-icon class="unmask" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
+            </ion-item>
+            <small class="small-form">Au moins 8 caractères dont une majuscule et un chiffre</small>
+          </ion-col>
 
-      <ion-button color="secondary" [disabled]="!registrationForm.valid" type="submit">Créer mon compte</ion-button>
-      <p>Nous ne revendons pas vos données personelles et nous ne spammons pas</p>
+          <ion-col class="ion-padding-vertical">
+            <ion-item>
+              <ion-label position="floating">Confirmer le mot de passe</ion-label>
+              <ion-input type="password" formControlName="pwdconf"></ion-input>
+            </ion-item>
+          </ion-col>
 
-    </form>
+          <div class="wrapper-cta">
+
+          
+          <ion-col class="check">
+                <ion-checkbox class="checkbox" color="primary" formControlName="certif"></ion-checkbox>
+                <ion-label class="check-label">Je certifie avoir plus de 18 ans et adhérer aux <a href="#!">condtions générales d'utilisations</a>.</ion-label>
+          </ion-col>
+
+          <ion-col class="ion-padding-vertical">
+            <ion-button color="transparent" class="success-gradient" size="large" expand="block" [disabled]="!registrationForm.valid" type="submit">Créer mon compte</ion-button>
+            <small class="small-form">Nous ne revendons pas vos données personelles et nous ne spammons pas</small>
+          </ion-col>
+        </div>
+     
+      </form>
+
+    </ion-row>
+
+    </div>
+  </ion-grid>
+
+  <div class="form-flow">
+    <!-- Colorize Progressbar -->
+    <ion-progress-bar color="primary" value="0.6666"></ion-progress-bar>
   </div>
+
 
 </ion-content>
