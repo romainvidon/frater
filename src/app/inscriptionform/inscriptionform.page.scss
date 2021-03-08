@@ -38,7 +38,7 @@ p.subtitle {
         display: inline-block;
         position: absolute;
         right: 16px;
-        bottom: 5px;
+        bottom: 0;
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 10000;
@@ -60,6 +60,6 @@ p.subtitle {
         display: block;
         position: absolute;
         right: 25px;
-        top: 35px;
+        top: -30px;
     }
 }
