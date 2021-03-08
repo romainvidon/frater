@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InscriptionformPageRoutingModule } from './inscriptionform-routing.module';
 
 import { InscriptionformPage } from './inscriptionform.page';
-import { PatternHeaderComponent } from '../pattern-header/pattern-header.component';
+import { PatternHeaderModule } from '../pattern-header/pattern-header.module';
 
 @NgModule({
   imports: [
@@ -15,9 +15,9 @@ import { PatternHeaderComponent } from '../pattern-header/pattern-header.compone
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    InscriptionformPageRoutingModule
+    InscriptionformPageRoutingModule,
+    PatternHeaderModule
   ],
-  declarations: [InscriptionformPage, 
-    PatternHeaderComponent]
+  declarations: [InscriptionformPage]
 })
 export class InscriptionformPageModule {}

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FininscriptionPageRoutingModule } from './fininscription-routing.module';
 
 import { FininscriptionPage } from './fininscription.page';
-import { PatternHeaderComponent } from '../pattern-header/pattern-header.component';
+import { PatternHeaderModule } from '../pattern-header/pattern-header.module';
 
 @NgModule({
   imports: [
@@ -15,11 +15,13 @@ import { PatternHeaderComponent } from '../pattern-header/pattern-header.compone
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    FininscriptionPageRoutingModule
+    
+    PatternHeaderModule,
+    FininscriptionPageRoutingModule,
+    PatternHeaderModule
   ],
 
-  declarations: [FininscriptionPage, 
-    PatternHeaderComponent]
+  declarations: [FininscriptionPage]
 
 })
 export class FininscriptionPageModule {}
