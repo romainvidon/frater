@@ -45,9 +45,10 @@ p.subtitle {
   display: inline-block;
   position: absolute;
   right: 16px;
-  bottom: 6px;
+  bottom: 0;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 10000;
 }
 
 .wrapper-cta {
@@ -69,6 +70,6 @@ p.subtitle {
   display: block;
   position: absolute;
   right: 25px;
-  top: 35px;
+  top: -30px;
 }
 /*# sourceMappingURL=inscriptionform.page.css.map */

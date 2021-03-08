@@ -21,7 +21,8 @@ import { PatternHeaderModule } from '../pattern-header/pattern-header.module';
     PatternHeaderModule
   ],
 
-  declarations: [FininscriptionPage]
+  declarations: [FininscriptionPage, 
+    PatternHeaderComponent]
 
 })
 export class FininscriptionPageModule {}
