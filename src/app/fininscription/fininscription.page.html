@@ -20,18 +20,18 @@
         <ion-col class="radio-group">
           <ion-radio-group formControlName="typeRecherche">
             <ion-item>
-              <ion-radio value="peuimporte" (click)="untoogle()"></ion-radio>
+              <ion-radio value="peuimporte" ></ion-radio>
               <ion-label>Peu importe le secteur</ion-label>
 
             </ion-item>
             <ion-item>
-              <ion-radio value="proche" (click)="toogle()"></ion-radio>
+              <ion-radio value="proche" ></ion-radio>
               <ion-label>Proche de moi</ion-label>
 
             </ion-item>
           </ion-radio-group>
 
-          <ion-item *ngIf="show">
+          <ion-item *ngIf="finForm.value.typeRecherche == 'proche'">
             <ion-range min="0" max="50" step="5" pin="true" snaps="true" ticks="true" color="primary"
               formControlName="slider"></ion-range>
             <ion-label>{{finForm.value.slider}} km</ion-label>

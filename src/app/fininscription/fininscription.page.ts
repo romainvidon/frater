@@ -12,19 +12,9 @@ import { UserService } from '../user.service';
 })
 export class FininscriptionPage implements OnInit {
   role: typeof TypeRole = TypeRole; // EJS n'a pas l'air de vouloir directement TypeRole.x
-  public show: boolean = false;
   user: User = {email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
   isSubmitted = false;
   finForm: FormGroup;
- 
-    toogle(){
-        if(!this.show)
-            this.show = true;
-    }
-    untoogle(){
-        if(this.show)
-            this.show = !this.show;
-    }
 
   constructor(private router:Router, private fb: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
    }
