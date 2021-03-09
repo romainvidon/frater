@@ -30,7 +30,7 @@ export class InscriptionformPage implements OnInit {
         certif:[false,[Validators.requiredTrue]],
       },
         {
-            validator: this.checkIfMatchingPasswords('pwd', 'pwdconf')
+            validators: [this.checkIfMatchingPasswords('pwd', 'pwdconf')]
         }
         );
   }
@@ -73,7 +73,6 @@ export class InscriptionformPage implements OnInit {
   submitForm() {
     this.isSubmitted = true;
     if (!this.registrationForm.valid) {
-      console.log('Remplissez tous les champs!')
       return false;
     } else {
       let v = this.registrationForm.value;
@@ -82,7 +81,6 @@ export class InscriptionformPage implements OnInit {
       this.user.password = v.pwd;
       this.router.navigate(['/fininscription', {user: JSON.stringify(this.user)}] )
       console.log(this.user);
-      console.log(this.registrationForm.value)
     }
   }
 }

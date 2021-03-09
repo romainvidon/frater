@@ -1,7 +1,6 @@
 <ion-content [fullscreen]="true">
   <app-pattern-header></app-pattern-header>
 
-
   <ion-grid>
     <ion-row class="container-content">
       <form [formGroup]="finForm" (ngSubmit)="go()" novalidate>
@@ -47,16 +46,22 @@
             <ion-list-header class="ion-text-center">
               <h2>Je souhaite voir en premier :</h2>
             </ion-list-header>
-
-            <ion-item>
-              <ion-checkbox formControlName="chks"></ion-checkbox><br>
-              <ion-label>Des grandes soeurs</ion-label>
-            </ion-item>
+            <ion-radio-group formControlName="choixRecherche">
+              <ion-item>
+                <ion-radio value="f"></ion-radio><br>
+                <ion-label>Des grandes soeurs</ion-label>
+              </ion-item>
+              
+              <ion-item>
+                  <ion-radio value="h"></ion-radio>
+                  <ion-label>Des grands frères</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-radio value="h,f"></ion-radio>
+                <ion-label>Peu importe</ion-label>
+              </ion-item>
+            </ion-radio-group>
             
-            <ion-item>
-                <ion-checkbox formControlName="chkf"></ion-checkbox>
-                <ion-label>Des grands frères</ion-label>
-            </ion-item>
 
           </ion-list>
 
