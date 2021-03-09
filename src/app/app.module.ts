@@ -10,6 +10,7 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
+import { ErrorModule } from './error/error.module';
 import { PatternHeaderModule } from './pattern-header/pattern-header.module';
 
 export function jwtOptionsFactory(storage: Storage) {
@@ -24,7 +25,7 @@ export function jwtOptionsFactory(storage: Storage) {
  
 
 @NgModule({
-  declarations: [AppComponent, ErrorComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -33,12 +34,13 @@ export function jwtOptionsFactory(storage: Storage) {
     IonicStorageModule.forRoot(),
     AppRoutingModule,
     PatternHeaderModule,
+    ErrorModule,
     JwtModule.forRoot({
     jwtOptionsProvider:{
       provide: JWT_OPTIONS,
       useFactory: jwtOptionsFactory,
       deps: [Storage],
-    }
+    },
   })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

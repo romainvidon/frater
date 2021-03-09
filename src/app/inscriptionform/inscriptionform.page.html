@@ -31,6 +31,7 @@
               <ion-label position="floating">Adresse email</ion-label>
               <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
+            <app-error [formGroup]="registrationForm" input="email" error="email">Email non valide</app-error>
           </ion-col>
 
           <ion-col class="ion-padding-vertical">
@@ -40,6 +41,7 @@
               <ion-icon class="unmask" [name]="passwordToogleIcon" (click)="tooglePassword()" slot="end">
               </ion-icon>
             </ion-item>
+            <app-error [formGroup]="registrationForm" input="pwd" error="pattern">Le mot de passe n'est pas valide.</app-error>
             <small class="small-form">Au moins 8 caractères dont une majuscule et un chiffre</small>
           </ion-col>
 
@@ -50,6 +52,8 @@
               <ion-icon class="unmask" [name]="passwordConfirmToogleIcon" (click)="toogleConfirmPassword()" slot="end">
               </ion-icon>
             </ion-item>
+            
+            <app-error [formGroup]="registrationForm" input="pwdconf" error="notEquivalent">Les mots de passes ne correspondent pas.</app-error>
           </ion-col>
 
           <div class="wrapper-cta">

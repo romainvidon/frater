@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-error',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
+  @Input() formGroup: FormGroup;
+  @Input() input: string;
+  @Input() error: string;
+  
   constructor() { }
 
   ngOnInit() {}

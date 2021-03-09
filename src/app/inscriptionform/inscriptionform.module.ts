@@ -8,6 +8,7 @@ import { InscriptionformPageRoutingModule } from './inscriptionform-routing.modu
 
 import { InscriptionformPage } from './inscriptionform.page';
 import { PatternHeaderModule } from '../pattern-header/pattern-header.module';
+import { ErrorModule } from '../error/error.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { PatternHeaderModule } from '../pattern-header/pattern-header.module';
     ReactiveFormsModule,
     IonicModule,
     InscriptionformPageRoutingModule,
-    PatternHeaderModule
+    PatternHeaderModule,
+    ErrorModule,
   ],
   declarations: [InscriptionformPage]
 })
