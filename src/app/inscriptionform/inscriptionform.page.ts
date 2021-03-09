@@ -25,8 +25,8 @@ export class InscriptionformPage implements OnInit {
     this.registrationForm = this.fb.group({
         prenom:['',[Validators.required]],
         email: ['',[Validators.required, Validators.email]],
-        pwd:['',[Validators.required,Validators.minLength(4),Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
-        pwdconf:['',[Validators.required,Validators.minLength(4),Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),]],
+        pwd:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$')]],
+        pwdconf:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$'),]],
         certif:[false,[Validators.requiredTrue]],
       },
         {
