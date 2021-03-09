@@ -12,7 +12,7 @@
         <ion-col class="col-age">
           J'ai<ion-input type="number" placeholder="18" formControlName="age"></ion-input>ans.
         </ion-col>
-
+        <app-error [formGroup]="finForm" input="age" error="min">Vous devez avoir au moins 18 ans.</app-error>
 
         <ion-col class="col-title-2">
           <h2>Ta recherche :</h2>
