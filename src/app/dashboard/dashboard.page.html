@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+
+<ion-grid>
+    <p>Mon compte</p>
+    <h1>Vous apparaissez comme ceci</h1>
+    <ion-avatar>
+        <img src="http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png">
+    </ion-avatar>
+    <p>Nom a mettre</p>
+    <p>Age a mettre</p>
+
+    <ion-item>
+        <ion-label position="stacked">Bio</ion-label>
+        <ion-textarea
+          disabled
+          readonly
+          value="Aucun contenu pour le moment. Éditez votre bio.">
+        </ion-textarea>
+    </ion-item>
+
+    <p>Rôle: </p>
+    <p>Apparaître connecté: </p>
+    <ion-button (click)="go()">
+        <ion-icon name="create"></ion-icon>
+        <ion-label>Éditer</ion-label>
+    </ion-button>
+</ion-grid>
+
 
 </ion-content>
