@@ -12,8 +12,8 @@
     <ion-avatar>
         <img src="http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png">
     </ion-avatar>
-    <p>Nom a mettre</p>
-    <p>Age a mettre</p>
+    <p>{{users.pseudo}}</p>
+    <p>{{users.age}} ans</p>
 
     <ion-item>
         <ion-label position="stacked">Bio</ion-label>
@@ -24,7 +24,7 @@
         </ion-textarea>
     </ion-item>
 
-    <p>Rôle: </p>
+    <p>Rôle: {{users.role}}</p>
     <p>Apparaître connecté: </p>
     <ion-button (click)="go()">
         <ion-icon name="create"></ion-icon>

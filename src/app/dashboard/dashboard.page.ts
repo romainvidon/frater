@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { User } from '../user';
 import { UserService } from '../user.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { Storage } from '@ionic/storage';
-
 
 @Component({
   selector: 'app-dashboard',
@@ -10,13 +11,30 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+    users: User;
 
-  constructor(private router : Router, private route: ActivatedRoute, private userService: UserService, private storage: Storage) { }
+  constructor(private router : Router, private userService: UserService,private storage:Storage) { }
 
   ngOnInit() {
-    this.storage.get('access_token').then((val) => {
-        console.log('Vos infos sont les suivantes', val);
-      });
+    const helper = new JwtHelperService();
+    this.storage.get('access_token').then(token => {
+
+      //On décode le token
+      let a = helper.decodeToken(token).sub;
+
+      //On vérifie si le token est expiré si oui ,redirection vers la page de login
+      //Si non on affiche les données dans le dashboard
+      if(!helper.isTokenExpired(token)){
+        console.log(a);
+        this.userService.getUser(a).subscribe(user => {
+            console.log(user);
+            this.users = user;
+            })
+        }
+        else if(helper.isTokenExpired(token)){
+            this.router.navigate(['/login']);
+        }
+    })
   }
   go(){
       this.router.navigate(['/compte']);
