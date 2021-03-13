@@ -19,21 +19,21 @@ export class DashboardPage implements OnInit {
     const helper = new JwtHelperService();
     this.storage.get('access_token').then(token => {
 
-      //On décode le token
+      //On décode le token et on le met ds une varible
       let a = helper.decodeToken(token).sub;
 
       //On vérifie si le token est expiré si oui ,redirection vers la page de login
       //Si non on affiche les données dans le dashboard
       if(!helper.isTokenExpired(token)){
-        console.log(a);
         this.userService.getUser(a).subscribe(user => {
             console.log(user);
             this.users = user;
             })
         }
-        else if(helper.isTokenExpired(token)){
-            this.router.navigate(['/login']);
-        }
+      else{
+        //Marche pas la redirection doit se faire au niveau du app.module 
+        this.router.navigate(['/login']);
+      }
     })
   }
   go(){
