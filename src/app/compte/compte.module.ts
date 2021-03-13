@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ComptePageRoutingModule } from './compte-routing.module';
 
 import { ComptePage } from './compte.page';
+import { UserDetailsModule } from '../user-details/user-details.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ComptePageRoutingModule
+    ComptePageRoutingModule,
+    UserDetailsModule,
   ],
   declarations: [ComptePage]
 })
