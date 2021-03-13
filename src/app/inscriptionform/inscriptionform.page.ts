@@ -15,7 +15,7 @@ export class InscriptionformPage implements OnInit {
   passwordConfirmToogleIcon = 'eye';
   registrationForm: FormGroup;
   isSubmitted = false;
-  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0}};
+  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},bio:"Aucun contenu pour le moment. Éditez votre bio.",visible:false};
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

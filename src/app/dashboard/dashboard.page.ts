@@ -31,7 +31,7 @@ export class DashboardPage implements OnInit {
             })
         }
       else{
-        //Marche pas la redirection doit se faire au niveau du app.module 
+        //La redirection marche en fait. 
         this.router.navigate(['/login']);
       }
     })

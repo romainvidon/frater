@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorModule } from './error/error.module';
+import { SliderModule } from './slider/slider.module';
 import { PatternHeaderModule } from './pattern-header/pattern-header.module';
 
 export function jwtOptionsFactory(storage: Storage) {
@@ -35,6 +36,7 @@ export function jwtOptionsFactory(storage: Storage) {
     AppRoutingModule,
     PatternHeaderModule,
     ErrorModule,
+    SliderModule,
     JwtModule.forRoot({
     jwtOptionsProvider:{
       provide: JWT_OPTIONS,
