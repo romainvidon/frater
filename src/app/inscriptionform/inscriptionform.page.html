@@ -23,6 +23,7 @@
               <ion-label position="floating" class="ion-no-horizontal-padding">Prénom ou surnom</ion-label>
               <ion-input formControlName="prenom"></ion-input>
             </ion-item>
+            <app-error [formGroup]="registrationForm" input="prenom" error="notEquivalent">Ton pseudo est invalide.</app-error>
             <small class="small-form">Comment veux-tu que l'on t'appelle sur frater ?</small>
           </ion-col>
 
