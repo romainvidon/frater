@@ -43,10 +43,8 @@ export class InscriptionformPage implements OnInit {
       return (group:FormGroup) => {
       let word = group.controls[banword];
       for(let i = 0;i<this.banlist.length;i++){
-        if(this.banlist[i].words === word.value){
+        if(word.value.includes(this.banlist[i].words)){
             return word.setErrors({notEquivalent: true})
-        }
-        else{
         }
       }
     }
