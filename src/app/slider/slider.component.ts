@@ -27,6 +27,10 @@ export class SliderComponent implements OnInit {
         this.userService.getUser(a).subscribe(user => {
             console.log(user);
             this.users = user;
+
+            //Si le toogle est sur ON ou OFF on met la valeur du toogle true or false dans la
+            //prop visible du user et on fait la requête updateUser
+            //La requête n'est absolument pas opti mais c'était pour tester
             if(event.detail.checked){
             this.state = true;
             this.users.visible = this.state;
