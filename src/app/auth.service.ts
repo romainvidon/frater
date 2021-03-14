@@ -15,30 +15,39 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor(private http: HttpClient, private storage: Storage, private helper: JwtHelperService) { }
+  constructor(private http: HttpClient, public storage: Storage, private helper: JwtHelperService) { }
 
   login(email: string, password: string): Observable<any>{
     return this.http.post<any>(this.authUrl, {strategy:"local",email: email, password: password});
   }
 
-  setCurrentUser(user: User): void{
-    this.storage.set("user", user);
+  setCurrentUser(user: User): Promise<any>{
+    return this.storage.set("user", user);
   }
 
-  getCurrentUser(): any {
-    this.storage.get("jwt_token").then(token => {
-      if(this.helper.isTokenExpired(token)){
-        return {isOk : false}
-      } else {
-        this.storage.get("user").then(user => {
-          if(user){
-            return {isOk: true, user: user};
-          } else {
-            //this.getUser(this.helper.decodeToken(token))
-            console.log(this.helper.decodeToken(token));
-          }
-        });
-      }
+   getCurrentUser(): Promise<any> {
+    return new Promise<any>((resolve, reject)=>{
+      this.storage.get("access_token").then(token => {
+        if(this.helper.isTokenExpired(token)){
+          resolve({isOk : false});
+        } else {
+          this.storage.get("user").then(user => {
+            if(user){
+              resolve({isOk: true, user: user});
+            } else {
+              //this.getUser(this.helper.decodeToken(token))
+              console.log(this.helper.decodeToken(token));
+              resolve({});
+            }
+          });
+        }
+      });
+
     });
+    
   }
+
+  /*getCurrentUser(): Promise<any>{
+    return new Promise(this.getCurrentUserSync);
+  }*/
 }

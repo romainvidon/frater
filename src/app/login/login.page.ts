@@ -29,9 +29,15 @@ export class LoginPage implements OnInit {
         this.storage.ready().then(() => {
           this.storage.set('access_token', result.accessToken);
           this.presentToast("Connexion réussie");
-          this.authService.setCurrentUser(result.user);
-          //this.router.navigate(["/dashboard"]);
-          this.authService.getCurrentUser();
+          this.authService.setCurrentUser(result.user).then(()=>{
+            this.authService.getCurrentUser().then((userResult)=>{
+              console.log(userResult);
+              console.log("test");
+            });
+          });
+          
+          this.router.navigate(["/dashboard"]);
+          
         });
       } else {
         this.presentToast("Email ou mot de passe incorrect");
@@ -42,6 +48,7 @@ export class LoginPage implements OnInit {
   logout(){
     this.storage.ready().then(() => {
       this.storage.set('access_token', "");
+      this.authService.getCurrentUser().then(r=>console.log(r));
       this.presentToast("Déconnexion réussie");
     });
   }
