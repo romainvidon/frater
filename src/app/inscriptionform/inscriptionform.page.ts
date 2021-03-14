@@ -15,7 +15,7 @@ export class InscriptionformPage implements OnInit {
   passwordConfirmToogleIcon = 'eye';
   registrationForm: FormGroup;
   isSubmitted = false;
-  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0}};
+  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},bio:"Aucun contenu pour le moment. Éditez votre bio.",visible:false};
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -25,8 +25,8 @@ export class InscriptionformPage implements OnInit {
     this.registrationForm = this.fb.group({
         prenom:['',[Validators.required]],
         email: ['',[Validators.required, Validators.email]],
-        pwd:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$')]],
-        pwdconf:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$'),]],
+        pwd:['',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*€£é",\'²~;./:§ù¤¨µ+^=°àç_è`|(){}\\\\\[\\]-]).{8,}$')]],
+        pwdconf:['',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*€£é",\'²~;./:§ù¤¨µ+^=°àç_è`|(){}\\\\\[\\]-]).{8,}$'),]],
         certif:[false,[Validators.requiredTrue]],
       },
         {

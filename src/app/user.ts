@@ -12,6 +12,8 @@ export interface User {
         longitude: number;
         latitude: number;
     };
+    bio:string;
+    visible:boolean;
 }
 export enum Genre{
     Masculin = "m",
