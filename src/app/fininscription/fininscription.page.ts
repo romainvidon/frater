@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 })
 export class FininscriptionPage implements OnInit {
   role: typeof TypeRole = TypeRole; // EJS n'a pas l'air de vouloir directement TypeRole.x
-  user: User = {email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[]};
+  user: User = {email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[],bio:"Aucun contenu pour le moment. Éditez votre bio.",visible:false};
   isSubmitted = false;
   finForm: FormGroup;
 

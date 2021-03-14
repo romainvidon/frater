@@ -17,20 +17,15 @@
 
     <ion-item>
         <ion-label position="stacked">Bio</ion-label>
-        <ion-textarea
-          disabled
-          readonly
-          value="Aucun contenu pour le moment. Éditez votre bio.">
-        </ion-textarea>
+        <ion-textarea disabled readonly value="{{users.bio}}"></ion-textarea>
     </ion-item>
 
     <p>Rôle: {{users.role}}</p>
-    <p>Apparaître connecté: </p>
+    <app-slider></app-slider>
     <ion-button (click)="go()">
         <ion-icon name="create"></ion-icon>
         <ion-label>Éditer</ion-label>
     </ion-button>
 </ion-grid>
-
 
 </ion-content>
