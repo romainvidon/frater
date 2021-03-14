@@ -3,6 +3,8 @@ import { User } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +16,14 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private storage: Storage, private helper: JwtHelperService ) { }
 
   //On récup les users, erreur 404 si cela marche pas 
   getUsers(){
     return this.http.get<User>(this.usersUrl ,this.httpOptions);
   }
   /* On récup le user, Erreur 404 si cela marche pas */
-  getUser(id: number){
+  getUser(id: string){
       return this.http.get<User>(this.usersUrl + "/" +id,this.httpOptions)
   }
   addUser(user: User): Observable<User>{
@@ -30,6 +32,8 @@ export class UserService {
   updateUser(user: User): Observable<User>{
     return this.http.put<User>(this.usersUrl + "/"+ user._id, user, this.httpOptions);
   }
+
+
   /**
    * On gère la requête qui a pasz marché
    * L'app continue de marcher.
