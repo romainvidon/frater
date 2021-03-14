@@ -29,7 +29,9 @@ export class LoginPage implements OnInit {
         this.storage.ready().then(() => {
           this.storage.set('access_token', result.accessToken);
           this.presentToast("Connexion réussie");
-          this.router.navigate(["/dashboard"]);
+          this.authService.setCurrentUser(result.user);
+          //this.router.navigate(["/dashboard"]);
+          this.authService.getCurrentUser();
         });
       } else {
         this.presentToast("Email ou mot de passe incorrect");

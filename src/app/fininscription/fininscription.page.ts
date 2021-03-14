@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,Validators,FormBuilder, FormControl } from '@angular/forms';
 import { User, Genre, TypeRole } from '../user';
 import { UserService } from '../user.service';
+import { ToastController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-fininscription',
@@ -16,8 +18,16 @@ export class FininscriptionPage implements OnInit {
   isSubmitted = false;
   finForm: FormGroup;
 
-  constructor(private router:Router, private fb: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private authService: AuthService, private toastController: ToastController, private router:Router, private fb: FormBuilder, private route: ActivatedRoute, private userService: UserService) {
    }
+
+   async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
 
   ngOnInit() {
       this.finForm = this.fb.group({
@@ -57,9 +67,19 @@ export class FininscriptionPage implements OnInit {
         this.user.genre = genres[v.genre] ?? Genre.Autre;
       }
       console.log(this.user);
-      this.userService.addUser(this.user).subscribe(result => {
+      this.userService.addUser(this.user).subscribe((result) => {
         console.log(result);
+        let resultUser: User = result;
+        this.authService.setCurrentUser(result);
         this.router.navigate(['/dashboard']);
+      }, (err) => {
+        if(err.status == 409){
+          this.presentToast("Email déjà utilisé");
+        } else {
+          this.presentToast("Erreur lors de l'enregistrement");
+        }
+        console.error(err);
+        
       });
       
     }
