@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genre, TypeRole, User } from '../user';
+import bannedwords from 'public/assets/bannedwords.json';
 
 @Component({
   selector: 'app-inscriptionform',
@@ -9,6 +10,7 @@ import { Genre, TypeRole, User } from '../user';
   styleUrls: ['./inscriptionform.page.scss'],
 })
 export class InscriptionformPage implements OnInit {
+  public banlist:{words:string}[] = bannedwords;
   showPassword = false;
   showConfirmPassword = false;
   passwordToogleIcon = 'eye';
@@ -19,6 +21,7 @@ export class InscriptionformPage implements OnInit {
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+      
     this.route.paramMap.subscribe(map => {
       this.user.role = (map.get("role") === "adelphe" ? TypeRole.Adelphe : TypeRole.Jeune);
     });
@@ -30,10 +33,25 @@ export class InscriptionformPage implements OnInit {
         certif:[false,[Validators.requiredTrue]],
       },
         {
-            validators: [this.checkIfMatchingPasswords('pwd', 'pwdconf')]
+            validators: [this.checkIfMatchingPasswords('pwd', 'pwdconf'),this.checkIfBanWord('prenom')]
         }
         );
   }
+
+  //Fonction pour tester si le pseudo peut-être utilisé ou pass si il ne fait pas parti de la liste des mots bannis
+  checkIfBanWord(banword:string){
+      return (group:FormGroup) => {
+      let word = group.controls[banword];
+      for(let i = 0;i<this.banlist.length;i++){
+        if(this.banlist[i].words === word.value){
+            return word.setErrors({notEquivalent: true})
+        }
+        else{
+        }
+      }
+    }
+  }
+
   //Afficher cacher le mot de passe
   tooglePassword(): void{
     this.showPassword = !this.showPassword;
