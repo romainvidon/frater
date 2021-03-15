@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorModule } from './error/error.module';
 import { SliderModule } from './slider/slider.module';
+import { MenuhamburgerModule } from './Menuhamburger/menuhamburger.module';
+import { TabsModule } from './tabs/tabs.module';
 import { PatternHeaderModule } from './pattern-header/pattern-header.module';
 
 export function jwtOptionsFactory(storage: Storage) {
@@ -36,6 +38,8 @@ export function jwtOptionsFactory(storage: Storage) {
     AppRoutingModule,
     PatternHeaderModule,
     ErrorModule,
+    TabsModule,
+    MenuhamburgerModule,
     SliderModule,
     JwtModule.forRoot({
     jwtOptionsProvider:{
