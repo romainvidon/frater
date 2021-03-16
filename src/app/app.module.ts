@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorModule } from './error/error.module';
 import { SliderModule } from './slider/slider.module';
-import { MenuhamburgerModule } from './Menuhamburger/menuhamburger.module';
+import { MenuhamburgerModule } from './menuhamburger/menuhamburger.module';
 import { TabsModule } from './tabs/tabs.module';
 import { PatternHeaderModule } from './pattern-header/pattern-header.module';
 import { UserDetailsModule } from './user-details/user-details.module';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuhamburgerComponent } from './Menuhamburger.component';
+import { MenuhamburgerComponent } from './menuhamburger.component';
 
 @NgModule({
   declarations: [MenuhamburgerComponent],

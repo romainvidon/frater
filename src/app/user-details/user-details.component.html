@@ -2,17 +2,22 @@
     <ion-card-header>
         <ion-avatar>
             <img src="/assets/icon/favicon.png" alt="avatar">
-            <button *ngIf="editable"></button>  
+            <button *ngIf="editable" shape="round"><ion-icon name="camera-outline"></ion-icon></button>  
         </ion-avatar>
     </ion-card-header>
     <ion-card-content>
-       <p>Nom</p>
-        <p>Age</p>
+       <p>{{user.pseudo}} <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button></p>
+       
+        <p>{{user.age}} <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button></p>
+        
+
         <div>
             
-            <p>Description</p>
+            <p>{{user.bio}}</p>
+            <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button>
+
         </div>
-        <p>Rôle :</p>  
+        <p>Rôle : {{user.role}}</p>  
     </ion-card-content>
     
 </ion-card>

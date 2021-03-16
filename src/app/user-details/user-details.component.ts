@@ -8,7 +8,7 @@ import { User } from '../user';
 })
 export class UserDetailsComponent implements OnInit {
   @Input() editable: boolean;
-  user: User;
+  @Input() user: User;
   constructor() { }
 
   ngOnInit() {}
