@@ -9,7 +9,6 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ErrorComponent } from './error/error.component';
 import { ErrorModule } from './error/error.module';
 import { SliderModule } from './slider/slider.module';
 import { MenuhamburgerModule } from './menuhamburger/menuhamburger.module';

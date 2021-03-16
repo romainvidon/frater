@@ -1,4 +1,4 @@
 <ion-label>Apparaître connecté</ion-label>
-<ion-toggle [(ngModel)]="state" (ionChange)="change($event)"></ion-toggle>
+<ion-toggle (ionChange)="change($event)"></ion-toggle>
 <p *ngIf="state">Oui</p>
 <p *ngIf="!state">Non</p>
