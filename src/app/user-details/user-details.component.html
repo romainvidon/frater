@@ -1,23 +1,36 @@
 <ion-card>
-    <ion-card-header>
-        <ion-avatar>
-            <img src="/assets/icon/favicon.png" alt="avatar">
-            <button *ngIf="editable" shape="round"><ion-icon name="camera-outline"></ion-icon></button>  
-        </ion-avatar>
-    </ion-card-header>
     <ion-card-content>
-       <p>{{user.pseudo}} <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button></p>
-       
-        <p>{{user.age}} <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button></p>
-        
+        <ion-item lines="none">
+            <ion-avatar>
+                <img src="/assets/icon/favicon.png" alt="avatar">
+            </ion-avatar>
+                <button (click)="activateImage()"><ion-icon name="camera-outline"></ion-icon></button>
+        </ion-item>
 
-        <div>
-            
+        <ion-item lines="none" *ngIf="editable_image">
+            <p>ça affiche l'image</p>
+        </ion-item>
+
+        <ion-item lines="none">
+            <p>{{user.age}}</p>
+            <button (click)="activateAge()"><ion-icon name="create-outline"></ion-icon></button>
+        </ion-item>
+
+        <ion-item lines="none" *ngIf="editable_age">
+            <p>ça affiche l'age</p>
+        </ion-item>
+
+        <ion-item lines="none">
             <p>{{user.bio}}</p>
-            <button *ngIf="editable" ><ion-icon name="create-outline"></ion-icon></button>
+            <button (click)="activateBio()"><ion-icon name="create-outline"></ion-icon></button>
+        </ion-item>
 
-        </div>
-        <p>Rôle : {{user.role}}</p>  
+        <ion-item lines="none" *ngIf="editable_bio">
+            <p>ça affiche la bio</p>
+        </ion-item>
+
+        <ion-item lines="none">
+            <p>Rôle: {{user.role}}</p>
+        </ion-item>
     </ion-card-content>
-    
 </ion-card>
