@@ -5,12 +5,13 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from './../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-    private usersUrl = 'http://127.0.0.1:3030/users';  // URL pour l'api des user
+    private usersUrl = environment.apiUrl + '/users';  // URL pour l'api des user
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

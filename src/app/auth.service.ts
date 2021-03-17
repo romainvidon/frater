@@ -6,12 +6,14 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { UserService } from './user.service';
 
+import { environment } from './../environments/environment'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authUrl = 'http://127.0.0.1:3030/authentication';  // URL pour l'api des user
+  private authUrl = environment.apiUrl + '/authentication';  // URL pour l'api des user
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
