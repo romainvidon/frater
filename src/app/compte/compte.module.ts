@@ -8,6 +8,7 @@ import { ComptePageRoutingModule } from './compte-routing.module';
 
 import { ComptePage } from './compte.page';
 import { UserDetailsModule } from '../user-details/user-details.module';
+import { SliderModule } from '../slider/slider.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { UserDetailsModule } from '../user-details/user-details.module';
     IonicModule,
     ComptePageRoutingModule,
     UserDetailsModule,
+    SliderModule,
   ],
   declarations: [ComptePage]
 })

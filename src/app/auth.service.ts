@@ -26,7 +26,7 @@ export class AuthService {
     return this.storage.set("user", user);
   }
 
-   getCurrentUser(): Promise<any> {
+  getCurrentUser(): Promise<any> {
     return new Promise<any>((resolve, reject)=>{
       this.storage.get("access_token").then(token => {
         if(this.helper.isTokenExpired(token)){
@@ -41,8 +41,6 @@ export class AuthService {
                 this.setCurrentUser(user).then(savedUser => resolve({isOk: true, user: savedUser}));
               })
               
-              
-              resolve({});
             }
           });
         }
@@ -52,7 +50,15 @@ export class AuthService {
     
   }
 
-  /*getCurrentUser(): Promise<any>{
-    return new Promise(this.getCurrentUserSync);
-  }*/
+  patchCurrentUser(changes: any): Promise<any>{
+    return new Promise<any>((resolve, reject)=>{
+      this.getCurrentUser().then(result => {
+        if(result.isOk){
+          this.userService.patchUser(result.user, changes).subscribe(userPatch => {
+              this.setCurrentUser(userPatch);
+            });
+        }
+      });
+    });
+  }
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../user';
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { Storage } from '@ionic/storage';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-slider',
@@ -10,39 +9,22 @@ import { UserService } from '../user.service';
   styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
-    public state:boolean = false;
-    users:User;
+  user:User;
 
-  constructor(private userService: UserService,private storage:Storage) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
+  
+  toggle(e: any){
+    this.authService.patchCurrentUser({visible:e.detail.checked});
+  }
 
-  ngOnInit() {}
-
-  change(event){
-    const helper = new JwtHelperService();
-    this.storage.get('access_token').then(token => {
-
-      let a = helper.decodeToken(token).sub;
-
-      if(!helper.isTokenExpired(token)){
-        this.userService.getUser(a).subscribe(user => {
-            console.log(user);
-            this.users = user;
-
-            //Si le toogle est sur ON ou OFF on met la valeur du toogle true or false dans la
-            //prop visible du user et on fait la requête updateUser
-            //La requête n'est absolument pas opti mais c'était pour tester
-            if(event.detail.checked){
-            this.state = true;
-            this.users.visible = this.state;
-            this.userService.updateUser(this.users).subscribe(result=>{console.log(result)});
-            }
-            else
-            this.state = false;
-            this.users.visible =  this.state;
-            this.userService.updateUser(this.users).subscribe(result=>{console.log(result)});
-            })
-        }
-    })
+  ngOnInit() {
+    this.user = this.userService.blank();
+    this.authService.getCurrentUser().then((result)=>{
+      if(result.isOk){
+        this.user = result.user;
+      }
+      this.user.visible ??= false;
+    });
   }
 
 }

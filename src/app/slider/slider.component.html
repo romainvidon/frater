@@ -1,4 +1,2 @@
 <ion-label>Apparaître connecté</ion-label>
-<ion-toggle [(ngModel)]="state" (ionChange)="change($event)"></ion-toggle>
-<p *ngIf="state">Oui</p>
-<p *ngIf="!state">Non</p>
+<ion-toggle (checked)="user.visible" (ionChange)="toggle($event)"></ion-toggle>
