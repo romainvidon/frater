@@ -8,16 +8,25 @@
         </ion-item>
 
         <ion-item lines="none" *ngIf="editable_image">
-            <p>ça affiche l'image</p>
+            <p>ça va dans la gallerie d'image du téléphone pour mettre la photo !</p>
         </ion-item>
 
         <ion-item lines="none">
-            <p>{{user.age}}</p>
-            <button (click)="activateAge()"><ion-icon name="create-outline"></ion-icon></button>
+            <p>{{user.pseudo}}</p>
+            <button (click)="activatePseudo()"><ion-icon name="create-outline"></ion-icon></button>
         </ion-item>
 
-        <ion-item lines="none" *ngIf="editable_age">
-            <p>ça affiche l'age</p>
+        <ion-item lines="none">
+            <p>{{user.age}} Ans</p>
+        </ion-item>
+
+        <ion-item lines="none" *ngIf="editable_pseudo">
+            <ion-textarea placeholder="Changez de pseudo en écrivant dans le champ de texte et en appuyant sur OK " (keyup)="changePseudo($event)"></ion-textarea>
+        </ion-item>
+
+        <ion-item *ngIf="editable_pseudo">
+            <ion-button (click)="deactivatePseudo()" color="danger">Annuler</ion-button>
+            <ion-button (click)="changePseudo($event)" color="primary">Ok</ion-button>
         </ion-item>
 
         <ion-item lines="none">
@@ -26,10 +35,14 @@
         </ion-item>
 
         <ion-item lines="none" *ngIf="editable_bio">
-            <p>ça affiche la bio</p>
+            <ion-textarea placeholder="Ecrivez votre bio et appuyer sur Ok pour la modifier" (keyup)="changeBio($event)"></ion-textarea>
         </ion-item>
 
-        </div>
+        <ion-item *ngIf="editable_bio">
+            <ion-button (click)="deactivateBio()" color="danger">Annuler</ion-button>
+            <ion-button (click)="changeBio($event)" color="primary">Ok</ion-button>
+        </ion-item>
+
         <p>Rôle : {{user.role}}</p>
         <app-slider></app-slider>
     </ion-card-content>
