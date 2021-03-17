@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { Genre, TypeRole, User } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -17,7 +17,9 @@ export class UserService {
   };
 
   constructor( private http: HttpClient, private storage: Storage, private helper: JwtHelperService ) { }
-
+  blank(): User{
+    return {email:"",genre:Genre.Autre,password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},typeRecherche:[],bio:"Aucun contenu pour le moment. Éditez votre bio.",visible:false};
+  }
   //On récup les users, erreur 404 si cela marche pas 
   getUsers(){
     return this.http.get<User>(this.usersUrl ,this.httpOptions);
@@ -32,8 +34,9 @@ export class UserService {
   updateUser(user: User): Observable<User>{
     return this.http.put<User>(this.usersUrl + "/"+ user._id, user, this.httpOptions);
   }
-
-
+  patchUser(user: User, values: any): Observable<User>{
+    return this.http.patch<User>(this.usersUrl + "/"+ user._id, values, this.httpOptions);
+  }
   /**
    * On gère la requête qui a pasz marché
    * L'app continue de marcher.
