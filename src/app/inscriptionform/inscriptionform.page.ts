@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genre, TypeRole, User } from '../user';
+import bannedwords from 'public/assets/bannedwords.json';
 
 @Component({
   selector: 'app-inscriptionform',
@@ -9,31 +10,46 @@ import { Genre, TypeRole, User } from '../user';
   styleUrls: ['./inscriptionform.page.scss'],
 })
 export class InscriptionformPage implements OnInit {
+  public banlist:{words:string}[] = bannedwords;
   showPassword = false;
   showConfirmPassword = false;
   passwordToogleIcon = 'eye';
   passwordConfirmToogleIcon = 'eye';
   registrationForm: FormGroup;
   isSubmitted = false;
-  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0}};
+  user: User= {email:"",password:"",pseudo:"",age:0,rayonRecherche:0,role:TypeRole.Adelphe,position:{longitude:0,latitude:0},bio:"Aucun contenu pour le moment. Éditez votre bio.",visible:false};
   constructor(private fb:FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+      
     this.route.paramMap.subscribe(map => {
       this.user.role = (map.get("role") === "adelphe" ? TypeRole.Adelphe : TypeRole.Jeune);
     });
     this.registrationForm = this.fb.group({
         prenom:['',[Validators.required]],
         email: ['',[Validators.required, Validators.email]],
-        pwd:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$')]],
-        pwdconf:['',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&é",²~;./:§ù¤¨µ+^=°àç_è`-|\\\\(){}]{8,}$'),]],
+        pwd:['',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*€£é",\'²~;./:§ù¤¨µ+^=°àç_è`|(){}\\\\\[\\]-]).{8,}$')]],
+        pwdconf:['',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*€£é",\'²~;./:§ù¤¨µ+^=°àç_è`|(){}\\\\\[\\]-]).{8,}$'),]],
         certif:[false,[Validators.requiredTrue]],
       },
         {
-            validators: [this.checkIfMatchingPasswords('pwd', 'pwdconf')]
+            validators: [this.checkIfMatchingPasswords('pwd', 'pwdconf'),this.checkIfBanWord('prenom')]
         }
         );
   }
+
+  //Fonction pour tester si le pseudo peut-être utilisé ou pass si il ne fait pas parti de la liste des mots bannis
+  checkIfBanWord(banword:string){
+      return (group:FormGroup) => {
+      let word = group.controls[banword];
+      for(let i = 0;i<this.banlist.length;i++){
+        if(word.value.includes(this.banlist[i].words)){
+            return word.setErrors({notEquivalent: true})
+        }
+      }
+    }
+  }
+
   //Afficher cacher le mot de passe
   tooglePassword(): void{
     this.showPassword = !this.showPassword;

@@ -9,17 +9,21 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ErrorComponent } from './error/error.component';
 import { ErrorModule } from './error/error.module';
+import { SliderModule } from './slider/slider.module';
+import { MenuhamburgerModule } from './menuhamburger/menuhamburger.module';
+import { TabsModule } from './tabs/tabs.module';
 import { PatternHeaderModule } from './pattern-header/pattern-header.module';
+import { UserDetailsModule } from './user-details/user-details.module';
+import { environment } from 'src/environments/environment';
 
 export function jwtOptionsFactory(storage: Storage) {
   return {
     tokenGetter: () => {
       return storage.get('access_token');
     },
-    allowedDomains: ["localhost:3030","127.0.0.1:3030"],
-    disallowedRoutes: ["//127.0.0.1:3030/authentification"],
+    allowedDomains: environment.allowedDomains,
+    disallowedRoutes: [environment.apiUrl + "/authentification"],
   }
 }
  
@@ -35,6 +39,10 @@ export function jwtOptionsFactory(storage: Storage) {
     AppRoutingModule,
     PatternHeaderModule,
     ErrorModule,
+    UserDetailsModule,
+    TabsModule,
+    MenuhamburgerModule,
+    SliderModule,
     JwtModule.forRoot({
     jwtOptionsProvider:{
       provide: JWT_OPTIONS,

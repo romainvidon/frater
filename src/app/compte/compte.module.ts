@@ -4,20 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DashboardPageRoutingModule } from './dashboard-routing.module';
+import { ComptePageRoutingModule } from './compte-routing.module';
 
-import { DashboardPage } from './dashboard.page';
+import { ComptePage } from './compte.page';
+import { UserDetailsModule } from '../user-details/user-details.module';
 import { SliderModule } from '../slider/slider.module';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComptePageRoutingModule,
+    UserDetailsModule,
     SliderModule,
-    DashboardPageRoutingModule
   ],
-  declarations: [DashboardPage]
+  declarations: [ComptePage]
 })
-export class DashboardPageModule {}
+export class ComptePageModule {}
